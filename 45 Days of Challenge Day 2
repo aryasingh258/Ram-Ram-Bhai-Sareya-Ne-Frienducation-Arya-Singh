@@ -1,0 +1,44 @@
+//Missing numbers
+class Solution {
+    public int missingNumber(int[] nums) 
+    {
+        Arrays.sort(nums);
+        int j=0;
+        int i=0;
+        while(j<=nums[nums.length-1])
+        {
+            if(nums[i]!=j)
+            {
+              return j;
+            }
+            i++;
+            j++;
+        }
+        return nums.length;
+    }
+}
+//Best Time to Buy and Sell Stock
+class Solution 
+{
+    public int maxProfit(int[] prices) 
+    {  int maxprofit=Integer.MIN_VALUE;
+		  int bp[]=new int[prices.length];
+		  bp[0]=prices[0];
+		  for(int i=1;i<prices.length;i++)
+		  {
+			  bp[i]=Math.min(prices[i-1],bp[i-1]);
+		  }
+		  for(int i=0;i<prices.length;i++)
+		  {
+			  int profit=prices[i]-bp[i];
+			  if(profit<0) {
+				  profit=0;
+			  }
+			  if(maxprofit<profit)
+			  {
+				  maxprofit=profit;
+			  }
+		  }
+		  return maxprofit;
+    }
+}
